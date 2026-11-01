@@ -221,7 +221,7 @@ async function subirDrive() {
 // ---------------------------------------------------------------------
 //  Comunicación con Apps Script
 // ---------------------------------------------------------------------
-async function llamar(payload, ms = 360000) {
+async function llamar(payload, ms = 600000) {
   const ctl = new AbortController(), t = setTimeout(() => ctl.abort(), ms);
   try {
     const res = await fetch(SCRIPT_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload), signal: ctl.signal });
@@ -229,7 +229,7 @@ async function llamar(payload, ms = 360000) {
     if (r.status !== "success") throw new Error(r.message);
     return r;
   } catch (e) {
-    throw new Error(e.name === "AbortError" ? "Tardó más de 3 minutos. Mira la pestaña Ejecuciones del Apps Script." : e.message);
+    throw new Error(e.name === "AbortError" ? "Tardó más de 10 minutos. Mira la pestaña Ejecuciones del Apps Script." : e.message);
   } finally { clearTimeout(t); }
 }
 
