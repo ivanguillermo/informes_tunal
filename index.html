@@ -221,7 +221,7 @@ async function subirDrive() {
 // ---------------------------------------------------------------------
 //  Comunicación con Apps Script
 // ---------------------------------------------------------------------
-async function llamar(payload, ms = 180000) {
+async function llamar(payload, ms = 360000) {
   const ctl = new AbortController(), t = setTimeout(() => ctl.abort(), ms);
   try {
     const res = await fetch(SCRIPT_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload), signal: ctl.signal });
