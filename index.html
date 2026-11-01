@@ -202,7 +202,7 @@ function descargarPDF() {
 
 function descargarBlob(blob, nombre) {
   const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = nombre;
-  document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 30000);
+  document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 60000);
 }
 
 async function subirDrive() {
